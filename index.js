@@ -76,6 +76,8 @@ function regexStart(x) {
     return '\\b([' + x + '][\\W_]*?)';
   } else if (selected == "negative") {
     return 'regex:negative:\\b([' + x + '][\\W_]*?)';
+  } else if (selected == "test") {
+    return 'regex:masterexxesmutter:\\b([' + x + '][\\W_]*?)';
   } else {
     console.log("ERROR");
   }
