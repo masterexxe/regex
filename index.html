@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<h1>String to Regex</h1>
+<div style="text-align: center;">
+    <input id="textbox" type="text" placeholder="Enter a string here">
+</div>
+<div id="result">
+    <h1>Regex Ausgabe</h1>
+
+
+    <div id="resultRegex"></div>
+
+    <div id="stringForRegex"></div>
+
+</div>
+
+<div id="generateButtonDiv">
+    <button type="button" onclick=" window.open('https://regex101.com/','_blank')" id="generateButton2"> Test</button>
+    <button type="button" onclick="getInput()" id="generateButton">Convert</button>
+</div>
+
+<div id="typeButtonDiv">
+    <h2>REGEX OPTIONEN:</h2>
+    <form>
+        <div class="form-check">
+            <input type="radio" class="form-check-input" id="keywords" name="gender" />
+            <label class="form-check-label" for="keywords">Keywords</label>
+        </div>
+        <div class="form-check">
+            <input type="radio" class="form-check-input" id="blocked" name="gender" checked/>
+            <label class="form-check-label" for="blocked">Blocked Terms</label>
+        </div>
+        <div class="form-check">
+            <input type="radio" class="form-check-input" id="negative" name="gender" />
+            <label class="form-check-label" for="negative">Negative</label>
+        </div>
+    </form>
+</div>
+
+
+<script src="index.js"></script>
+</body>
+</html>

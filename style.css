@@ -1,0 +1,130 @@
+body {
+    background-color: black;
+    color: red;
+}
+
+h1, h2 {
+    text-align: center;
+    text-transform: uppercase;
+    font-family: kongtext;
+}
+#generateButtonDiv {
+    position: fixed;
+    bottom: 10vw;
+    right: 10vw;
+    top: 85%;
+}
+
+#stringForRegex {
+    position: absolute;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    top: 120%;
+    color: white;
+    font-family: "Arial Black";
+}
+
+#result {
+    position: absolute;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    top: 45%;
+    left: 10vw; right: 10vw;
+    height: 20vh;
+    border-radius: 25px 0 25px 0;
+}
+
+#resultRegex {
+    position: absolute;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    top: 80%;
+    left: 10vw; right: 10vw;
+    font-family: kongtext;
+}
+
+#typeButtonDiv {
+    font-size: 19px;
+    position: fixed;
+    bottom: 10vw;
+    left: 10vw;
+    top: 75%;
+    font-family: kongtext;
+
+
+
+}
+input[type=radio] {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 3px solid #999;
+    accent-color: red;
+}
+
+
+#blockedButton, #keywordButton, #negativButton {
+
+
+    padding:20px 0px;
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+    color:black;
+    position: relative;
+    text-decoration: none;
+    letter-spacing: 1.5px;
+    border-radius: 25px 0 25px 0;
+}
+
+
+#generateButton {
+    font-family: kongtext;
+    width:180px;
+    display:inline-block;
+    padding:20px 0px;
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+    color:black;
+    position: relative;
+    text-decoration: none;
+    letter-spacing: 1.5px;
+    border-radius: 25px 0 25px 0;
+}
+#generateButton2 {
+    font-family: kongtext;
+    width:180px;
+    display:inline-block;
+    padding:20px 0px;
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+    color:black;
+    position: relative;
+    text-decoration: none;
+    letter-spacing: 1.5px;
+    border-radius: 25px 0 25px 0;
+}
+
+input[type="text"] {
+    position: absolute;
+    top: 40%;
+    left: 10vw; right: 10vw;
+    height: 30vh;
+    margin-top: -25vh;
+    width: 80%;
+    font-size: 1.5em;
+    font-family: kongtext;
+    border-radius: 25px 0 25px 0;
+}
+
+@font-face {
+    font-family: kongtext;
+    src: url(kongtext/kongtext.ttf);
+}
+
+
