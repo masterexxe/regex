@@ -34,16 +34,22 @@ function getInput() {
   let finalRegex = "";
   startRegex = regexStart(inputValuesSplitAccent[0]);
 
+  console.log(rest)
 
 
+  let len = rest.length;
 
-  rest.forEach(element => {
-    if(rest !== element) {
-      finalRegexArr.push(regex(element));
-    } else {
-      endRegex = regexEnd(element);
+  for (let i = 0; i < len; i++) {
+    console.log(rest[i]);
+    if (i+1 >= len || rest[i] != rest[i+1]) {
+      console.log('oops!'); // print oops only if we're at the end of the array OR elements are different
+      finalRegexArr.push(regex(rest[i]));
     }
-  })
+  }
+
+
+  //end-part of the regex
+  finalRegexArr.push('+\\b');
 
   finalRegex = finalRegexArr.join('');
 
@@ -51,7 +57,6 @@ function getInput() {
   finalRegex = startRegex + finalRegex + endRegex;
 
 
-  //finalRegex = accents(finalRegexArr);
   stringForRegex.innerHTML = inputValue;
   finalText.innerHTML = finalRegex;
 
@@ -77,9 +82,6 @@ function regexStart(x) {
 
 }
 
-function regexEnd(x) {
-  return '+([' + x + '][\\W_]*?)+\\b';
-}
 
 function accents(s) {
 
@@ -102,6 +104,5 @@ function accents(s) {
 
 
   return r.toLowerCase();
-
 
 }
