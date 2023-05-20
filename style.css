@@ -1,6 +1,6 @@
 body {
     background-color: black;
-    color: blue;
+    color: red;
 }
 
 h1, h2 {
@@ -62,7 +62,7 @@ input[type=radio] {
     height: 24px;
     border-radius: 50%;
     border: 3px solid #999;
-    accent-color: blue;
+    accent-color: red;
 }
 
 
