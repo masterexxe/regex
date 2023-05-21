@@ -102,7 +102,7 @@ function getInput() {
 }
 
 function regexOptionalParameters(x) {
-  return '+(?:(?:['+ x +'][\\W_]*?)+|)+';
+  return '+(?:(?:['+ x +'][\\W_]*?)+|)';
 }
 
 
