@@ -66,7 +66,7 @@ function getInput() {
         rest[i] = regexOptionalParameters(rest[i]);
       }
       if(rest[i-1] == "(" && rest[i+2] == ")") {
-        specialMode = true;
+        specialMode = false;
         finalRegexArr.pop(i);
         rest[i] = regexOptionalParametersOne(rest[i]);
         rest[i+1] = regexOptionalParametersTwo(rest[i+1]);
@@ -102,7 +102,7 @@ function getInput() {
 }
 
 function regexOptionalParameters(x) {
-  return '(?:(?:['+ x +'][\\W_]*?)';
+  return '(?:(?:['+ x +'][\\W_]*?)+|)';
 }
 
 
