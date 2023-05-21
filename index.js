@@ -12,6 +12,23 @@ input.addEventListener("keypress", function (event){
   }
 })
 
+function xy() {
+  if(inputValue.includes("(") && inputValue.includes(")")) {
+    let matches = regExp.exec(input.value);
+    console.log(matches[1]);
+    console.log(matches[1].length);
+
+    if(matches[1].length == 1) {
+      placeholder = regexOptionalParameters(matches[1]);
+      inputValue = inputValue.replace("("+matches[1]+")", placeholder)
+    } else if(matches[1].length == 2) {
+      placeholder = regexOptionalParametersDouble(matches[1]);
+      inputValue = inputValue.replace("("+matches[1]+")", placeholder)
+    }
+    console.log(inputValue);
+  }
+}
+
 
 
 function getInput() {
@@ -23,10 +40,11 @@ function getInput() {
     inputValuesSplitAccent.push(accents(element));
   });
 
+  console.log(inputValuesSplitAccent);
+  if(inputValuesSplitAccent.includes("(") && inputValuesSplitAccent.includes(")")) {
+  }
 
   let [first, ...rest] = inputValuesSplitAccent;
-
-
 
   let endRegex = "";
   let startRegex = "";
@@ -34,22 +52,42 @@ function getInput() {
   let finalRegex = "";
   startRegex = regexStart(inputValuesSplitAccent[0]);
 
-  console.log(rest)
 
 
   let len = rest.length;
 
+  let specialMode = false;
+  specialMode = false;
   for (let i = 0; i < len; i++) {
-    console.log(rest[i]);
+    specialMode = true;
     if (i+1 >= len || rest[i] != rest[i+1]) {
-      console.log('oops!'); // print oops only if we're at the end of the array OR elements are different
+      if(rest[i-1] == "(" && rest[i+1] == ")") {
+        finalRegexArr.pop(i);
+        rest[i] = regexOptionalParameters(rest[i]);
+      }
+      if(rest[i-1] == "(" && rest[i+2] == ")") {
+        specialMode = true;
+        finalRegexArr.pop(i);
+        rest[i] = regexOptionalParametersOne(rest[i]);
+        rest[i+1] = regexOptionalParametersTwo(rest[i+1]);
+      }
+
       finalRegexArr.push(regex(rest[i]));
     }
   }
 
 
   //end-part of the regex
-  finalRegexArr.push('+\\b');
+  if (specialMode === true) {
+    finalRegexArr.push('\\b');
+  } else {
+    finalRegexArr.push('+\\b');
+  }
+
+  console.log(finalRegexArr);
+  finalRegexArr = finalRegexArr.filter(item => item !== "+([)][\\W_]*?)");
+
+
 
   finalRegex = finalRegexArr.join('');
 
@@ -63,8 +101,28 @@ function getInput() {
   navigator.clipboard.writeText(finalRegex);
 }
 
+function regexOptionalParameters(x) {
+  return '(?:(?:['+ x +'][\\W_]*?)';
+}
+
+
+
+function regexOptionalParametersOne(x) {
+  return '((?:['+x+'][\\W_]*?)+|';
+}
+
+function regexOptionalParametersTwo(x) {
+  return '(?:['+x+'][\\W_]*?)+)';
+}
+
+
 function regex(x) {
-  return '+([' + x +'][\\W_]*?)';
+  if(x.includes("(") && x.includes(")")) {
+    return x;
+  } else {
+    return '+([' + x +'][\\W_]*?)';
+  }
+
 }
 
 function regexStart(x) {
